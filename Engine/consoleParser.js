@@ -1,5 +1,5 @@
 function testEcho(){
-	var consoleInput = document.getElementById("userInput").value;
+	var consoleInput = $("#userInput").val();
 
 	if(trimInput){
 		consoleInput = consoleInput.trim();
@@ -8,6 +8,6 @@ function testEcho(){
 		consoleInput = consoleInput.toLowerCase();
 	}
 
-	document.getElementById("console").innerHTML +=consoleInput+"\n";
-	document.getElementById("userInput").value = "";
-}
+	$("#console").append(consoleInput+"\n"); 
+	$("#userInput").val("");
+};

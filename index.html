@@ -1,9 +1,22 @@
 <html>
+<script src="Engine/lib/jquery-1.12.2.min.js" type="text/javascript"></script>
 <script src="config.js" type="text/javascript"></script>
 <script src="Engine/consoleParser.js" type="text/javascript"></script>
 <body>
-	<textarea cols='80' rows='10' id='console' readonly></textarea>
-	<input type="text" id="userInput">
-	<input type="submit" value="Submit" onclick="testEcho()">
+	<center>
+		<div>
+			<textarea id='console' style="width:50%; height:50%" readonly></textarea>
+		</div>
+		<div>
+			<input type="text" id="userInput" style="width:50%" autofocus>
+		</div>
+	</center>
 </body>
+<script>
+	$("#userInput").keypress(function(event){
+		if(event.which == 13){
+			testEcho();
+		}
+	});
+</script>
 </html>
