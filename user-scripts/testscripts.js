@@ -1,10 +1,11 @@
-/** File for user-defined functions **/
+/**File for user-defined commands. All commands MUST take in consoleInput and return something to be outputted to the console.**/
+var genFunction = {
+	test: function(consoleInput){
+		return consoleInput;
+	},
 
-function testEcho(consoleInput){
-	return consoleInput;
-};
-
-function burn(consoleInput){
-	fireStart++;
-	return "We didn't start the fire x"+fireStart;
-};
+	burn: function (consoleInput){
+		userVars.fireStart++;
+		return "We didn't start the fire x"+userVars.fireStart;
+	}
+}
