@@ -1,6 +1,5 @@
 var consoleParser = {
 	takeInput: function(consoleInput){
-		//var consoleInput = ;
 		var consoleOutput = "";
 
 		if(trimInput){
