@@ -1,26 +1,26 @@
 var EngineObject = class {
 	
 	constructor(name){
-		this.refName = name;
-		this.objObjects = [];
+		this.refName = name.toLowerCase();
+		this.objObjects = {};
 		this.objProps = {};
 		this.objFunctions = {};
 	}
 
-	addObject(objObject){
-		this.objObjects.push(objObject);
+	addObject(objName, objObject){
+		this.rmObjects[objName.toLowerCase()] = objObject;
 	}
 
 	addFunction(name, objFunction){
-		this.objFunctions[name] = objFunction.bind(this);
+		this.objFunctions[name.toLowerCase()] = objFunction.bind(this);
 	}
 
 	callFunction(name, ...args){
-		return this.objFunctions[name](args);
+		return this.objFunctions[name.toLowerCase()](args);
 	}
 
 	hasFunction(name){
-		return this.objFunctions.hasOwnProperty(name);
+		return this.objFunctions.hasOwnProperty(name.toLowerCase());
 	}
 }
 

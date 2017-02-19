@@ -6,15 +6,15 @@ var EngineRoom = class{
 	}
 
 	hasObject(objName){
-		return this.rmObjects.hasOwnProperty(objName);
+		return this.rmObjects.hasOwnProperty(objName.toLowerCase());
 	}
 
 	getObject(objName){
-		return this.rmObjects[objName];
+		return this.rmObjects[objName.toLowerCase()];
 	}
 
 	hasFunction(functName){
-		return this.rmFunctions.hasOwnProperty(functName);
+		return this.rmFunctions.hasOwnProperty(functName.toLowerCase());
 	}
 
 	hasObjectWithFunction(objName, functName){
@@ -29,23 +29,23 @@ var EngineRoom = class{
 	}
 
 	callFunction(functName, ...args){
-		return this.rmFunctions[functName](args);
+		return this.rmFunctions[functName.toLowerCase()](args);
 	}
 
 	addObject(objName, aObject){
-		this.rmObjects[objName] = aObject;
+		this.rmObjects[objName.toLowerCase()] = aObject;
 	}
 
 	removeObject(objName){
-		delete this.rmObject[objName];
+		delete this.rmObject[objName.toLowerCase()];
 	}
 
 	removeFunction(functName){
-		delete this.rmFunctions[functName];
+		delete this.rmFunctions[functName.toLowerCase()];
 	}
 
-	transferObject(objectName, actualObject, toRoom){
-		toRoom.addObject(objectName, actualObject);
+	transferObject(objectName, toRoom){
+		toRoom.addObject(objectName, this.getObject(objectName));
 		this.removeObject(objectName);
 	}	
 }

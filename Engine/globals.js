@@ -13,7 +13,7 @@ var ENGINE_global = {
 	},
 
 	addFunctionToList: function(functRefName, globalFunction){
-		this.functList[functRefName] = globalFunction;
+		this.functList[functRefName.toLowerCase()] = globalFunction;
 	},
 
 	addFunctionsToList: function(functObject){
@@ -21,17 +21,17 @@ var ENGINE_global = {
 
 		for(var i=0; i< propNames.length; i++){
 			var name = propNames[i];
-			this.functList[name] = functObject[name];
+			this.functList[name.toLowerCase()] = functObject[name];
 		}
 
 	},
 
 	hasFunction: function(functName){
-		return this.functList.hasOwnProperty(functName);
+		return this.functList.hasOwnProperty(functName.toLowerCase());
 	},
 
 	callFunction: function(functName, ...args){
-		return this.functList[functName](args);
+		return this.functList[functName.toLowerCase()](args);
 	},
 
 	setActiveRoom: function(activeRM){
