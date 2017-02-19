@@ -4,7 +4,13 @@
 <script src="Engine/lib/jquery-1.12.2.min.js" type="text/javascript"></script>
 <script src="config.js" type="text/javascript"></script>
 <script src="Engine/consoleParser.js" type="text/javascript"></script>
-<body>
+<script src="Engine/engineObject.js" type="text/javascript"></script>
+<script src="Engine/engineRoom.js" type="text/javascript"></script>
+<script src="Engine/globals.js" type="text/javascript"></script>
+<script src="user-scripts/testobjects.js" type="text/javascript"></script>
+<script src="user-scripts/mmpObjects.js" type="text/javascript"></script>
+
+<body onload="startup()">
 	<center>
 		<div>
 			<textarea id='console' style="width:50%; height:50%; margin-top:30px; resize: none" readonly></textarea>
@@ -17,8 +23,15 @@
 <script>
 	$("#userInput").keypress(function(event){
 		if(event.which == 13){
-			consoleParser.takeInput($("#userInput").val());
+			ENGINE_consoleParser.takeInput($("#userInput").val());
 		}
 	});
+
+	function startup(){
+		ENGINE_global.loadUserVars(userVars);
+		ENGINE_global.addFunctionsToList(genFunction);
+		//userObjects.setObjects();
+		mmpObjects.setObjects();
+	}
 </script>
 </html>

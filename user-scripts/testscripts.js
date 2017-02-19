@@ -4,8 +4,9 @@ var genFunction = {
 		return consoleInput;
 	},
 
-	burn: function (consoleInput){
-		userVars.fireStart++;
-		return "We didn't start the fire x"+userVars.fireStart;
+	burnIt: function (consoleInput){
+		ENGINE_global.userVars.fireStart++;
+;
+		return "We didn't start the fire x"+ENGINE_global.userVars.fireStart;
 	}
 }

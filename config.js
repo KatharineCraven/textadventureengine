@@ -10,5 +10,5 @@ var trimInput = true;
 
 //default handling of invalid input. Currently has an engine-defined default.
 function badInputHandler(consoleInput){
-	return consoleParser.defaultCmndNotFound(consoleInput);
+	return ENGINE_consoleParser.defaultCmndNotFound(consoleInput);
 };
