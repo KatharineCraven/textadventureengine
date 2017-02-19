@@ -6,6 +6,8 @@ var mmpObjects = {
 		var kid = new EngineObject("kid");
 		var doll = new EngineObject("doll");
 		var town = new EngineRoom("town");
+		var inventory = new EngineRoom("inventory");
+		var unreachable = new EngineRoom("unreachable");
 
 		kid.description = "Maybe you can talk";
 
@@ -25,7 +27,22 @@ var mmpObjects = {
 		doll.addFunction("examine", examine);
 
 		town.addObject("doll", doll);
-		ENGINE_global.setActiveRoom(town);
+		ENGINE_global.loadRoom("town", town);
+
+		var rustyKnife= new EngineObject("rustyKnife");
+		rustyKnife.description = "A rusty knife.";
+		rustyKnife.addFunction("examine", examine);
+
+		var outtaScope = new EngineObject("outtaScope");
+		outtaScope.description = "Can't touch this.";
+		outtaScope.addFunction("examine", examine);
+
+		inventory.addObject("knife", rustyKnife);
+		unreachable.addObject("doop", outtaScope);
+
+		ENGINE_global.loadRoom("inventory", inventory);
+		ENGINE_global.loadRoom("unreachable", unreachable);
+
 	}
 
 }

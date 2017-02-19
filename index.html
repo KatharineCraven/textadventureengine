@@ -31,8 +31,9 @@
 	function startup(){
 		ENGINE_global.loadUserVars(userVars);
 		ENGINE_global.addFunctionsToList(genFunction);
-		//userObjects.setObjects();
 		mmpObjects.setObjects();
+		ENGINE_global.setActiveRoom("town");
+		ENGINE_global.setInventory("inventory");
 		ENGINE_consoleParser.setParsingMapper(parsingMappings);
 	}
 </script>

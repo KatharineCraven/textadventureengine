@@ -8,13 +8,15 @@ var userObjects = {
 			return "You burn the " + this.refName;
 		};
 
+		var town = new EngineRoom("town");
+
 		candlestick.addFunction("burn", burn);
-		ENGINE_ObjectsList.loadObject(candlestick);
+		town.addObject("candlestick", candlestick);
 
 		var firewood = new EngineObject("firewood");
 		firewood.addFunction("burn", burn);		
-		ENGINE_ObjectsList.loadObject(firewood);
-
+		town.addObject("firewood", firewood);
+		ENGINE_global.loadRoom("town", town);
 	}
 
 }

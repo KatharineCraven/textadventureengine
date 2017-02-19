@@ -20,9 +20,18 @@ var ENGINE_consoleParser = {
 		if(ENGINE_global.activeRoom.hasFunction(inputArray[0])){ //Checks Room Function
 			consoleOutput = ENGINE_global.activeRoom.callFunction(inputArray[0], consoleInput);
 		}
+		else if(ENGINE_global.inventory.hasFunction(inputArray[0])){
+			consoleOutput = ENGINE_global.inventory.callFunction(inputArray[0], consoleInput);
+		}
 		else if (inputArray.length >= 2){ //Checks Objects in Room
 			if(ENGINE_global.activeRoom.hasObjectWithFunction(inputArray[1], inputArray[0])){
 				consoleOutput = ENGINE_global.activeRoom.callObjectFunction(inputArray[1], inputArray[0], consoleInput);
+			}
+			else if(ENGINE_global.inventory.hasObjectWithFunction(inputArray[1], inputArray[0])){
+				consoleOutput = ENGINE_global.inventory.callObjectFunction(inputArray[1], inputArray[0], consoleInput);
+			}
+			else{
+				consoleOutput = badInputHandler(consoleInput);
 			}
 		}
 		else if(ENGINE_global.hasFunction(inputArray[0])){ //Checks Global Function

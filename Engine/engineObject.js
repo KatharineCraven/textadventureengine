@@ -8,7 +8,20 @@ var EngineObject = class {
 	}
 
 	addObject(objName, objObject){
-		this.rmObjects[objName.toLowerCase()] = objObject;
+		this.objObjects[objName.toLowerCase()] = objObject;
+	}
+
+	getObject(objName){
+		this.objObjects[objName.toLowerCase()];
+	}
+
+	removeObject(objName){
+		delete this.objObjects[objName.toLowerCase()];
+	}
+
+	transferObject(objName, toObject){
+		toObject.addObject(objName, this.getObject(objName));
+		this.removeObject(objName);
 	}
 
 	addFunction(name, objFunction){
@@ -23,10 +36,3 @@ var EngineObject = class {
 		return this.objFunctions.hasOwnProperty(name.toLowerCase());
 	}
 }
-
-var ENGINE_ObjectsList = {
-	objectsList: {},
-	loadObject: function(objToAdd){
-		this.objectsList[objToAdd.refName] = objToAdd;
-	}
-};

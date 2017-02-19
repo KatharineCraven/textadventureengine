@@ -2,6 +2,8 @@ var ENGINE_global = {
 	userVars: {},
 	functList: {},
 	activeRoom: new EngineRoom("default"),
+	inventory: new EngineRoom("default"),
+	passiveRooms: {},
 
 	loadUserVars: function(userDefinedVarObject){
 		var objNames = Object.keys(userDefinedVarObject);
@@ -34,7 +36,24 @@ var ENGINE_global = {
 		return this.functList[functName.toLowerCase()](args);
 	},
 
-	setActiveRoom: function(activeRM){
-		this.activeRoom = activeRM;
+	setActiveRoom: function(rmName){
+		this.activeRoom = this.passiveRooms[rmName.toLowerCase()];
+		delete this.passiveRooms[rmName.toLowerCase()];
+	},
+
+	setInventory: function(rmName){
+		this.passiveRooms[this.activeRoom.refName.toLowerCase()] = this.inventory;
+		this.inventory = this.passiveRooms[rmName.toLowerCase()];
+		delete this.passiveRooms[rmName.refName.toLowerCase()];
+	},
+
+	switchActiveRoom: function(rmName){
+		this.passiveRooms[this.activeRoom.refName.toLowerCase()] = this.activeRoom;
+		this.activeRoom = this.passiveRooms[rmName.toLowerCase()];
+		delete this.passiveRooms[rmName.toLowerCase()];
+	},
+
+	loadRoom: function(rmName, room){
+		this.passiveRooms[rmName.toLowerCase()] = room;
 	}
 }
